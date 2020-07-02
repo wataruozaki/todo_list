@@ -1,5 +1,17 @@
 import React, { useState, useReducer } from "react";
-import { Grid, TextField, Button, Paper, makeStyles } from "@material-ui/core";
+import {
+  Grid,
+  TextField,
+  Button,
+  Paper,
+  makeStyles,
+  TableContainer,
+  TableHead,
+  TableBody,
+  TableCell,
+  Table,
+  TableRow,
+} from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -13,6 +25,9 @@ const useStyles = makeStyles(() => ({
   },
   button: {
     width: "100%",
+  },
+  table: {
+    maxWidth: "500px",
   },
 }));
 function App() {
@@ -38,6 +53,18 @@ function App() {
               All Delete
             </Button>
           </Grid>
+          <TableContainer>
+            <Table className={classes.table} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>ID</TableCell>
+                  <TableCell>Title</TableCell>
+                  <TableCell>Body</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody></TableBody>
+            </Table>
+          </TableContainer>
         </Grid>
       </Paper>
     </form>
