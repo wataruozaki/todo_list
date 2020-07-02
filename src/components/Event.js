@@ -1,5 +1,5 @@
 import React from "react";
-import * as actionTypes from "./actions/actionTypes";
+import * as actionTypes from "../actions/actionTypes";
 
 import { TableCell, TableRow, Button } from "@material-ui/core";
 
