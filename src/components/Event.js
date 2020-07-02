@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import * as actionTypes from "../actions/actionTypes";
+
+import AppContext from "../context/AppContext";
 
 import { TableCell, TableRow, Button } from "@material-ui/core";
 
-function Event({ event, dispatch }) {
+function Event({ event }) {
+  const { dispatch } = useContext(AppContext);
   const id = event.id;
 
   const deleteEvent = (e) => {

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import Event from "./Event";
+import AppContext from "../context/AppContext";
 
 import {
   TableContainer,
@@ -17,7 +18,8 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function EventTable({ state, dispatch }) {
+function EventTable() {
+  const { state } = useContext(AppContext);
   const classes = useStyles();
   return (
     <TableContainer>
@@ -31,7 +33,7 @@ function EventTable({ state, dispatch }) {
         </TableHead>
         <TableBody>
           {state.map((event, index) => (
-            <Event key={index} event={event} dispatch={dispatch} />
+            <Event key={index} event={event} />
           ))}
         </TableBody>
       </Table>

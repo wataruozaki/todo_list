@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import * as actionTypes from "../actions/actionTypes";
 import {
   FormControl,
@@ -7,6 +7,7 @@ import {
   Button,
   makeStyles,
 } from "@material-ui/core";
+import AppContext from "../context/AppContext";
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -23,7 +24,8 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-function Form({ dispatch }) {
+function Form() {
+  const { dispatch } = useContext(AppContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
