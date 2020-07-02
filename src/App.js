@@ -1,6 +1,6 @@
 import React, { useState, useReducer } from "react";
 import Event from "./Event";
-import reducer from "./reducers";
+import reducer from "./reducers/events";
 import {
   Grid,
   TextField,
