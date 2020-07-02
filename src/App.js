@@ -39,6 +39,16 @@ function App() {
 
   const classes = useStyles();
 
+  const addEvent = (e) => {
+    e.preventDefault();
+    console.log(title, body);
+  };
+
+  const deleteAllEvents = (e) => {
+    e.preventDefault();
+    console.log("delete");
+  };
+
   return (
     <form>
       <Paper className={classes.paper}>
@@ -61,12 +71,20 @@ function App() {
             />
           </Grid>
           <Grid item xs={6}>
-            <Button className={classes.button} variant="contained">
+            <Button
+              className={classes.button}
+              variant="contained"
+              onClick={addEvent}
+            >
               Add
             </Button>
           </Grid>
           <Grid item xs={6}>
-            <Button className={classes.button} variant="contained">
+            <Button
+              className={classes.button}
+              variant="contained"
+              onClick={deleteAllEvents}
+            >
               All Delete
             </Button>
           </Grid>
