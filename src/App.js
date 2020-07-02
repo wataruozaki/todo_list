@@ -14,6 +14,7 @@ import {
   Table,
   TableRow,
 } from "@material-ui/core";
+import { DELETE_ALL_EVENT } from "./actions/actionTypes";
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -41,12 +42,16 @@ function App() {
 
   const addEvent = (e) => {
     e.preventDefault();
-    console.log(title, body);
+    dispatch({
+      type: "CREATE_EVENT",
+      title,
+      body,
+    });
   };
 
   const deleteAllEvents = (e) => {
     e.preventDefault();
-    console.log("delete");
+    dispatch({ type: DELETE_ALL_EVENT });
   };
 
   return (
