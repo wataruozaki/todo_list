@@ -1,4 +1,6 @@
 import React, { useState, useReducer } from "react";
+import Event from "./Event";
+import reducer from "./reducers";
 import {
   Grid,
   TextField,
@@ -31,17 +33,32 @@ const useStyles = makeStyles(() => ({
   },
 }));
 function App() {
+  const [state, dispatch] = useReducer(reducer, []);
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+
   const classes = useStyles();
+
   return (
     <form>
       <Paper className={classes.paper}>
         <h1>Todo List</h1>
         <Grid container spacing={3}>
           <Grid item xs={4}>
-            <TextField className={classes.textField} helperText="title" />
+            <TextField
+              className={classes.textField}
+              label="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </Grid>
           <Grid item xs={8}>
-            <TextField className={classes.textField} helperText="body" />
+            <TextField
+              className={classes.textField}
+              label="Body"
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+            />
           </Grid>
           <Grid item xs={6}>
             <Button className={classes.button} variant="contained">
@@ -62,7 +79,11 @@ function App() {
                   <TableCell>Body</TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody></TableBody>
+              <TableBody>
+                {state.map((event, index) => (
+                  <Event key={index} event={event} />
+                ))}
+              </TableBody>
             </Table>
           </TableContainer>
         </Grid>
