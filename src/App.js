@@ -5,7 +5,6 @@ import {
   Grid,
   TextField,
   Button,
-  Paper,
   makeStyles,
   TableContainer,
   TableHead,
@@ -13,6 +12,7 @@ import {
   TableCell,
   Table,
   TableRow,
+  FormControl,
 } from "@material-ui/core";
 import { DELETE_ALL_EVENT } from "./actions/actionTypes";
 
@@ -55,8 +55,8 @@ function App() {
   };
 
   return (
-    <form>
-      <Paper className={classes.paper}>
+    <>
+      <FormControl>
         <h1>Todo List</h1>
         <Grid container spacing={3}>
           <Grid item xs={4}>
@@ -93,25 +93,25 @@ function App() {
               All Delete
             </Button>
           </Grid>
-          <TableContainer>
-            <Table className={classes.table} aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>ID</TableCell>
-                  <TableCell>Title</TableCell>
-                  <TableCell>Body</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {state.map((event, index) => (
-                  <Event key={index} event={event} />
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
         </Grid>
-      </Paper>
-    </form>
+        <TableContainer>
+          <Table className={classes.table} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell>Title</TableCell>
+                <TableCell>Body</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {state.map((event, index) => (
+                <Event key={index} event={event} dispatch={dispatch} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </FormControl>
+    </>
   );
 }
 
